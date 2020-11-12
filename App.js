@@ -1,18 +1,22 @@
 import 'react-native-gesture-handler'
 import React from 'react';
 // 45deg, #FE6B8B 30%, #FF8E53 90%
-import {NavigationContainer} from '@react-navigation/native'
-import AuthStackRoot from './src/navigation/AuthStackRoot'
-
+import AppMain from './Appmain'
+import {Provider} from 'react-redux'
+import {createStore,applyMiddleware} from 'redux'
+import Reduxthunk from 'redux-thunk'
+import Reducers from './src/redux/reducers'
 
 const App= () => {
 
-
+  const store=createStore(Reducers,{},applyMiddleware(Reduxthunk))
+  
+  
 
   return (
-    <NavigationContainer>
-      <AuthStackRoot/>
-    </NavigationContainer>
+    <Provider store={store}>
+      <AppMain/>
+    </Provider>
   );
 };
 
