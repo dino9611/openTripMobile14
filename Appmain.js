@@ -3,7 +3,8 @@ import React,{useEffect,useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native'
 import AuthStackRoot from './src/navigation/AuthStackRoot'
 import {useSelector,useDispatch} from 'react-redux'
-import HomeScreen from './src/screen/HomeScreen'
+// import HomeScreen from './src/screen/HomeScreen'
+import StackRoot from './src/navigation/StackRoot'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import SplashScreen from './src/screen/SplashScreen'
 import Axios from 'axios'
@@ -43,12 +44,11 @@ const AppMain= () => {
         )
     }
 
-
     return (
         <NavigationContainer>
             {
                 Auth.isLogin?
-                <HomeScreen/>
+                <StackRoot/>
                 :
                 <AuthStackRoot/>
             }

@@ -91,7 +91,7 @@ const LoginScreeen= () => {
     return (
       <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
         <LinearGradient style={{flex:1}} useAngle angle={45} locations={[0.3,0.9]} colors={['#FE6B8B','#FF8E53']}>
-          <StatusBar backgroundColor={'#FF8E53'} barStyle={'light-content'}/>
+            <StatusBar backgroundColor={'#FF8E53'} barStyle={'light-content'}/>
             <View style={{flex:Platform.OS=='ios'?2:1,justifyContent:'center',alignItems:'center'}}>
               <TextH1>
                 Welcome Back !!
