@@ -11,7 +11,6 @@ const App= () => {
 
   const store=createStore(Reducers,{},applyMiddleware(Reduxthunk))
   
-  
 
   return (
     <Provider store={store}>

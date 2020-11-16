@@ -30,7 +30,7 @@ const TabRoot=()=>{
                       return (
                             <View style={{
                                 marginTop:-40,
-                                backgroundColor:'white',
+                                backgroundColor:'#FF8E53',
                                 height:60,
                                 width:60,
                                 padding:10,
@@ -38,15 +38,16 @@ const TabRoot=()=>{
                                 alignItems:'center',
                                 borderRadius:30,    
                                 borderWidth:5,
-                                borderColor:color,
+                                borderColor:'white',
                                 shadowColor:'black',
                                 shadowOffset:{
-                                    width:100,
+                                    width:10,
                                     height:100
                                 },
+                                elevation:7,
                                 shadowRadius:50
                             }}>
-                              <Icon name={iconName} type={type} size={size}  color={color} />
+                              <Icon name={iconName} type={type} size={size}  color={'white'} />
                             </View>
                       )
                     }else if(route.name === 'Cart'){
