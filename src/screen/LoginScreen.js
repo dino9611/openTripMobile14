@@ -21,7 +21,9 @@ const LoginScreeen= () => {
     const [isusernamefilled,setisusernamefilled]=useState(false)
     const [ispasswordfilled,setispasswordfilled]=useState(false)
     const [secure,setsecure]=useState(true)
+
     const [flexview,setflexview]=useState(2)
+    
     const [datauser,setdatauser]=useState({
       username:'',
       password:''
@@ -56,6 +58,7 @@ const LoginScreeen= () => {
       }
       setdatauser({...datauser,username:text})
     }
+
     const onPasswordChangetext=(text)=>{
       if(text){
         setispasswordfilled(true)

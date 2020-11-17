@@ -118,108 +118,110 @@ const HomeScreen=({navigation})=>{
     return(
         <View style={{flex:1,backgroundColor:'white'}}>
             <StatusBar backgroundColor={'#FF8E53'} barStyle={'light-content'}/>
-                <ScrollView>
-                    <LinearGradient 
-                        style={{
-                            height:150,
-                            width:150,
-                            borderRadius:75,
-                            alignSelf:'center',
-                            transform:[{translateY:-20},{scaleX:5}],
-                        
-                        }} 
-                        useAngle 
-                        angle={45} 
-                        locations={[0.3,0.9]} 
-                        colors={['#FE6B8B','#FF8E53']}
-                    >     
-                    </LinearGradient>
-                    <View style={{top: Platform.OS ==='ios'?40:-130,width:"100%",flex:1}}>
-                        <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:20}}>
-                            <View style={{flexDirection:'row',marginTop:10}}>
-                                <Fontawesome
-                                    name='plane-departure'
-                                    color='white'
-                                    size={20}
-                                /> 
-                                <TextH1 style={{fontSize:20}}>{''} Opentrip</TextH1>
-                            </View>
-                            <TextH1 style={{fontSize:20,fontWeight:'500',marginTop:10}}>Halo,{Auth.username}</TextH1>
+            <ScrollView >
+                <LinearGradient 
+                    style={{
+                        height:150,
+                        width:150,
+                        borderRadius:75,
+                        alignSelf:'center',
+                        transform:[{translateY:-20},{scaleX:5}],
+                    }} 
+                    useAngle 
+                    angle={45} 
+                    locations={[0.3,0.9]} 
+                    colors={['#FE6B8B','#FF8E53']}
+                >     
+                </LinearGradient>
+                <View style={{top: Platform.OS ==='ios'?40:-130,width:"100%",flex:1}}>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:20}}>
+                        <View style={{flexDirection:'row',marginTop:10}}>
+                            <Fontawesome
+                                name='plane-departure'
+                                color='white'
+                                size={20}
+                            /> 
+                            <TextH1 style={{fontSize:20}}>
+                                {/*buat ngasih spasi aja  */}
+                                {''}  
+                                Opentrip
+                            </TextH1>
                         </View>
-                        <View style={styles.container1Style}>
-                            <View style={styles.innercontainer1Style}>
-                                <Icon type='feather' name='map' color='#FF8E53' size={30}/>
-                                <Text style={styles.innertextcont1Style}>Map</Text>
-                            </View>
-                            <View style={styles.innercontainer1Style}>
-                                <Icon type='feather' name='map-pin' color='#FF8E53' size={30}/>
-                                <Text style={styles.innertextcont1Style}>Pinned</Text>
-                            </View>
-                            <View style={styles.innercontainer1Style}>
-                                <Icon type='material-icons' name='card-travel' color='#FF8E53' size={30}/>
-                                <Text style={styles.innertextcont1Style}>Wallet</Text>
-                            </View>
+                        <TextH1 style={{fontSize:20,fontWeight:'500',marginTop:10}}>
+                            Halo,{Auth.username}
+                        </TextH1>
+                    </View>
+                    <View style={styles.container1Style}>
+                        <View style={styles.innercontainer1Style}>
+                            <Icon type='feather' name='map' color='#FF8E53' size={30}/>
+                            <Text style={styles.innertextcont1Style}>Map</Text>
                         </View>
-                        <View style={{marginTop:20,paddingHorizontal:10}}>
-                            <Text style={{fontSize:20,color:'#FF8E53'}}>What Yours?</Text>
+                        <View style={styles.innercontainer1Style}>
+                            <Icon type='feather' name='map-pin' color='#FF8E53' size={30}/>
+                            <Text style={styles.innertextcont1Style}>Pinned</Text>
                         </View>
-                        <View style={{marginTop:10}}>
-                            <FlatList
-                                data={Data}
-                                renderItem={renderItem}
-                                keyExtractor={item => item.id}
-                                horizontal
-                                showsHorizontalScrollIndicator={false}
-                            />
-                        </View> 
-                        <View style={{marginTop:20,paddingHorizontal:10,flexDirection:'row'}}>
-                            <Text style={{fontSize:20,color:'#FF8E53'}}>Article </Text>
+                        <View style={styles.innercontainer1Style}>
+                            <Icon type='material-icons' name='card-travel' color='#FF8E53' size={30}/>
+                            <Text style={styles.innertextcont1Style}>Wallet</Text>
+                        </View>
+                    </View>
+                    <View style={{marginTop:20,paddingHorizontal:10}}>
+                        <Text style={{fontSize:20,color:'#FF8E53'}}>What Yours?</Text>
+                    </View>
+                    <View style={{marginTop:10}}>
+                        <FlatList
+                            data={Data}
+                            renderItem={renderItem}
+                            keyExtractor={item => item.id}
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                        />
+                    </View> 
+                    <View style={{marginTop:20,paddingHorizontal:10,flexDirection:'row'}}>
+                        <Text style={{fontSize:20,color:'#FF8E53'}}>Article </Text>
+                        <Icon
+                            type='material-icons'
+                            name='article'
+                            color='#FF8E53'
+
+                        />
+                    </View>
+                    <View style={{marginTop:10}}>
+                        <View style={styles.articleContainersStyle}>
+                            <Text style={{fontSize:15,color:'#FF8E53'}}>
+                                Tips Hemat Traveling
+                            </Text>
                             <Icon
-                                type='material-icons'
-                                name='article'
+                                type='antdesign'
+                                name='arrowright'
                                 color='#FF8E53'
 
                             />
                         </View>
-                        <View style={{marginTop:10}}>
-                            <View style={{borderColor:'lightgray',borderTopWidth:1,paddingVertical:7, borderBottomWidth:2,paddingHorizontal:30,flexDirection:'row',justifyContent:'space-between'}}>
-                                <Text style={{fontSize:15,color:'#FF8E53'}}>
-                                    Tips Hemat Traveling
-                                </Text>
-                                <Icon
-                                    type='antdesign'
-                                    name='arrowright'
-                                    color='#FF8E53'
+                        <View style={styles.articleContainersStyle}>
+                            <Text style={{fontSize:15,color:'#FF8E53'}}>
+                                Tips hemat Uang
+                            </Text>
+                            <Icon
+                                type='antdesign'
+                                name='arrowright'
+                                color='#FF8E53'
 
-                                />
-                            </View>
-                            <View style={{borderColor:'lightgray',marginVertical:4,borderTopWidth:1,paddingVertical:7, borderBottomWidth:2,paddingHorizontal:30,flexDirection:'row',justifyContent:'space-between'}}>
-                                <Text style={{fontSize:15,color:'#FF8E53'}}>
-                                    Tips hemat Uang
-                                </Text>
-                                <Icon
-                                    type='antdesign'
-                                    name='arrowright'
-                                    color='#FF8E53'
-
-                                />
-                            </View>
-                            <View style={{borderColor:'lightgray',marginVertical:4,borderTopWidth:1,paddingVertical:7, borderBottomWidth:2,paddingHorizontal:30,flexDirection:'row',justifyContent:'space-between'}}>
-                                <Text style={{fontSize:15,color:'#FF8E53'}}>
-                                    Tips ngumpulin uang
-                                </Text>
-                                <Icon
-                                    type='antdesign'
-                                    name='arrowright'
-                                    color='#FF8E53'
-
-                                />
-                            </View>
+                            />
+                        </View>
+                        <View style={styles.articleContainersStyle}>
+                            <Text style={{fontSize:15,color:'#FF8E53'}}>
+                                Tips ngumpulin uang
+                            </Text>
+                            <Icon
+                                type='antdesign'
+                                name='arrowright'
+                                color='#FF8E53'
+                            />
                         </View>
                     </View>
-                </ScrollView>
-
-      
+                </View>
+            </ScrollView>
         </View>
     )
 }
@@ -259,6 +261,16 @@ const styles=StyleSheet.create({
         padding:5,
         resizeMode: "cover",
     },
+    articleContainersStyle:{
+        borderColor:'lightgray',
+        marginVertical:4,
+        borderTopWidth:1,
+        paddingVertical:7, 
+        borderBottomWidth:2,
+        paddingHorizontal:30,
+        flexDirection:'row',
+        justifyContent:'space-between'
+    }
 })
 
 export default HomeScreen

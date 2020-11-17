@@ -19,6 +19,8 @@ export default (state=INITIAL_STATE,action)=>{
             return{...state,isLoading:false}
         case 'LOGOUT':
             return INITIAL_STATE
+        case 'ADDTOCART':
+            return {...state,cart:action.cart}
         default:
             return state
     }

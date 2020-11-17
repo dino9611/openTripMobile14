@@ -7,10 +7,11 @@ import CartScreen from './../screen/CartScreen'
 import ProfileScreen from './../screen/ProfileScreen'
 import {View} from 'react-native'
 import {Icon} from 'react-native-elements'
-
+import {useSelector} from 'react-redux'
 const Tab=createBottomTabNavigator()
 
 const TabRoot=()=>{
+    const Auth=useSelector(state=>state.Auth)
     return(
         <Tab.Navigator
 
@@ -75,7 +76,7 @@ const TabRoot=()=>{
 
             <Tab.Screen name='History' component={HistoryScreen} />
             <Tab.Screen name='Search' component={SearchScreen} />
-            <Tab.Screen name='Cart' component={CartScreen} />
+            <Tab.Screen name='Cart' component={CartScreen} options={{tabBarBadge:Auth.cart.length,tabBarBadgeStyle:{backgroundColor:'#FF8E53',color:'white',fontSize:10}}} />
             <Tab.Screen name='Profile' component={ProfileScreen} />
         </Tab.Navigator>
     )
