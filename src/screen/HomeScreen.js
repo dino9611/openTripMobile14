@@ -183,7 +183,6 @@ const HomeScreen=({navigation})=>{
                             type='material-icons'
                             name='article'
                             color='#FF8E53'
-
                         />
                     </View>
                     <View style={{marginTop:10}}>
@@ -206,7 +205,6 @@ const HomeScreen=({navigation})=>{
                                 type='antdesign'
                                 name='arrowright'
                                 color='#FF8E53'
-
                             />
                         </View>
                         <View style={styles.articleContainersStyle}>

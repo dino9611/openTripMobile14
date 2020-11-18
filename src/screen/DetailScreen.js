@@ -4,7 +4,8 @@ import {
     Text,
  
     ImageBackground,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    StyleSheet
 } from 'react-native'
 import { API_URL,dateformat } from '../helpers';
 import {Icon,Input,Button} from 'react-native-elements'
@@ -42,6 +43,14 @@ const DetailScreen=({navigation,route})=>{
             console.log(err)
         })
     }
+
+    const renderHeader = () => (
+        <View style={styles.header}>
+          <View style={styles.panelHeader}>
+            <View style={styles.panelHandle} />
+          </View>
+        </View>
+    )
 
     const renderContent = () => (
         <View
@@ -81,70 +90,92 @@ const DetailScreen=({navigation,route})=>{
     const sheetRef = React.useRef(null);
 
     const fall = new Animated.Value(1)
-
     
+  
 
     return(
         <>
-            <Animated.View
-                style={{flex:1,backgroundColor:'white',opacity: Animated.add(0.1, Animated.multiply(fall, 0.9))}}
-            >
-                <ImageBackground 
-                    source={{uri: API_URL+banner}}
-                    style={{flex:1}}
-                    imageStyle={{resizeMode:'cover'}}
+            <TouchableWithoutFeedback  onPress={()=>sheetRef.current.snapTo(1)}>
+                <Animated.View
+                    style={{flex:1,backgroundColor:'white',opacity: Animated.add(0.1, Animated.multiply(fall, 0.9))}}
                 >
-                    <TouchableWithoutFeedback onPress={()=>navigation.goBack()}>
-                        <View style={{alignSelf:'flex-start',marginLeft:20,marginTop:10,backgroundColor:'rgba(161, 153, 135, 0.58)',borderRadius:70}}>
-                            <Icon
-                                name='arrowleft'
-                                type='antdesign'
-                                color='white'
-                                size={30}
-                                style={{fontWeight:'bold'}}
-                            />
-                        </View>
-                    </TouchableWithoutFeedback>
-                </ImageBackground>
-                <View style={{flex:2,paddingHorizontal:10,paddingTop:50}}>
-                    <Text style={{fontSize:20,color:'black',marginVertical:5,textTransform:'capitalize'}}>{namaproduct} </Text>
-                    <Text style={{fontSize:20,color:'#FF8E53',marginVertical:5}}>Waktu </Text>
-                    <Text style={{marginVertical:5}} >{dateformat(tanggalmulai)} s/d {dateformat(tanggalberakhir)}</Text>
-                    <Text style={{fontSize:20,color:'#FF8E53',marginVertical:5}}>Deskripsi </Text>
-                    <Text style={{marginVertical:5}} >{deskripsi}</Text>
+                    <ImageBackground 
+                        source={{uri: API_URL+banner}}
+                        style={{flex:2}}
+                        imageStyle={{resizeMode:'cover'}}
+                    >
+                        <TouchableWithoutFeedback onPress={()=>navigation.goBack()}>
+                            <View style={{alignSelf:'flex-start',marginLeft:20,marginTop:10,backgroundColor:'rgba(161, 153, 135, 0.58)',borderRadius:70}}>
+                                <Icon
+                                    name='arrowleft'
+                                    type='antdesign'
+                                    color='white'
+                                    size={30}
+                                    style={{fontWeight:'bold'}}
+                                />
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </ImageBackground>
+                    <View style={{flex:2,paddingHorizontal:10,paddingTop:20}}>
+                        <Text style={{fontSize:20,color:'black',marginVertical:5,textTransform:'capitalize'}}>{namaproduct} </Text>
+                        <Text style={{fontSize:20,color:'#FF8E53',marginVertical:5}}>Waktu </Text>
+                        <Text style={{marginVertical:5}} >{dateformat(tanggalmulai)} s/d {dateformat(tanggalberakhir)}</Text>
+                        <Text style={{fontSize:20,color:'#FF8E53',marginVertical:5}}>Deskripsi </Text>
+                        <Text style={{marginVertical:5}} >{deskripsi}</Text>
 
-                    {/* <Text style={{fontSize:20,color:'#FF8E53',marginVertical:5}}>Jumlah orang </Text>
-                    <Input
-                        placeholder='berapa orang'
-                        keyboardType='numeric'
-                    /> */}
-                     <Button
-                        ViewComponent={LinearGradient}
-                        style={{
-                            paddingVertical:5
-                        }}
-                        linearGradientProps={{
-                            useAngle:true,
-                            angle:45,
-                            locations:[0.3,0.9],
-                            colors:['#FE6B8B','#FF8E53']
-                        }}
-                            title='Fill Quantity'
-                            onPress={()=>sheetRef.current.snapTo(0)}
-                        />
-                </View>
-            </Animated.View>
+                        {/* <Text style={{fontSize:20,color:'#FF8E53',marginVertical:5}}>Jumlah orang </Text>
+                        <Input
+                            placeholder='berapa orang'
+                            keyboardType='numeric'
+                        /> */}
+                        <Button
+                            ViewComponent={LinearGradient}
+                            style={{
+                                paddingVertical:5
+                            }}
+                            linearGradientProps={{
+                                useAngle:true,
+                                angle:45,
+                                locations:[0.3,0.9],
+                                colors:['#FE6B8B','#FF8E53']
+                            }}
+                                title='Fill Quantity'
+                                onPress={()=>sheetRef.current.snapTo(0)}
+                            />
+                    </View>
+                </Animated.View>
+            </TouchableWithoutFeedback>
             <BottomSheet
                 ref={sheetRef}
                 snapPoints={[300, 0]}
                 borderRadius={10}
                 initialSnap={1}
                 renderContent={renderContent}
+                renderHeader={renderHeader}
                 callbackNode={fall}
+                
             />
         </>
     )
 }
-
+const styles=StyleSheet.create({
+    header: {
+        backgroundColor: 'white',
+        shadowColor: '#000000',
+        paddingTop: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+    },
+    panelHeader: {
+        alignItems: 'center',
+    },
+    panelHandle: {
+        width: 40,
+        height: 8,
+        borderRadius: 4,
+        backgroundColor: '#00000040',
+        marginBottom: 10,
+    }
+})
 
 export default DetailScreen

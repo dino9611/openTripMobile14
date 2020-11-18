@@ -11,7 +11,9 @@ import {
 } from 'react-native'
 import Axios from 'axios'
 import { API_URL } from '../helpers';
-
+import Header from '../component/Header';
+import {Icon} from 'react-native-elements'
+import TextH1 from '../component/Texth1';
 
 
 const SearchScreen=(props)=>{
@@ -40,6 +42,7 @@ const SearchScreen=(props)=>{
         props.navigation.navigate('Details',{data:item})
     }
 
+  
     const RenderProduct=({item})=>{ //item sama dengan val di map
         return(
             <ImageBackground
@@ -66,16 +69,27 @@ const SearchScreen=(props)=>{
 
     return(
 
-        <View style={{flex:1,paddingHorizontal:10,paddingTop:5}}>
-            <FlatList
-                data={product}
-                keyExtractor={(item)=>`${item.id}`}//harsu string biar nggak warning
-                renderItem={RenderProduct}
-                showsVerticalScrollIndicator={false}
-                // onRefresh={OnRefreshFlatlist}
-                // refreshing={refresh}
-                refreshControl={<RefreshControl colors={['#FE6B8B','#FF8E53']} progressBackgroundColor={'white'} onRefresh={OnRefreshFlatlist} refreshing={refresh} />}
-            />
+        <View style={{flex:1}}>
+            <Header style={{alignItems:'center',paddingHorizontal:10}}>
+                <View style={{marginRight:10}}>
+                    <Icon name={'search-location'} type={'font-awesome-5'} size={23}  color={'white'} />
+                </View>
+                <View>
+                    <TextH1 style={{fontSize:25}}>Vacation</TextH1>
+                </View>
+            </Header>
+            <View style={{paddingHorizontal:10}}>
+                <FlatList
+                    data={product}
+                    keyExtractor={(item)=>`${item.id}`}//harsu string biar nggak warning
+                    renderItem={RenderProduct}
+                    showsVerticalScrollIndicator={false}
+                    // onRefresh={OnRefreshFlatlist}
+                    // refreshing={refresh}
+                    refreshControl={<RefreshControl colors={['#FE6B8B','#FF8E53']} progressBackgroundColor={'white'} onRefresh={OnRefreshFlatlist} refreshing={refresh} />}
+                />
+
+            </View>
         </View>
     )
 }

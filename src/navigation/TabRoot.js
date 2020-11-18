@@ -8,13 +8,15 @@ import ProfileScreen from './../screen/ProfileScreen'
 import {View} from 'react-native'
 import {Icon} from 'react-native-elements'
 import {useSelector} from 'react-redux'
+
 const Tab=createBottomTabNavigator()
 
 const TabRoot=()=>{
+    
     const Auth=useSelector(state=>state.Auth)
+
     return(
         <Tab.Navigator
-
             screenOptions={({route})=>({
                 tabBarIcon:({focused,color,size})=>{
                     let iconName;
